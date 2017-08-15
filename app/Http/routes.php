@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home.index');
 });
 
 //后台登录页面
@@ -52,11 +52,28 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>'login.admin'
     Route::post('cars','CarsController@picUpload');
     Route::put('cars','CarsController@picUpload');
 });
+
+
+
+
+
+
+
+
+
+
 //前台业务逻辑组
 //前台首页
 Route::get('home/index','Home\IndexController@index');
+
+// 获取验证码
+Route::get('/phoneregister','Home\PhoneregisterController@sendCode');
+
 Route::group(['prefix'=>'home','namespace'=>'Home'],
     function(){
-
+        // 前台登陆页面
+        Route::resource('login','LoginController');
+        // 前台注册页面
+        Route::resource('phoneregister','PhoneregisterController');
 
 });

@@ -49,8 +49,10 @@
                 400-057-8600</div>
 
             <div class="uc js-uc js-uc-new" data-gzlog="tracking_type=click&amp;eventid=1015123400000003">
-                <a href="javascript:" class="uc-my" id="js-login">登录</a>
+                <a href="{{ url('/home/login')}}" >登录</a>
+                <a href="{{ url('/home/phoneregister')}}" >注册</a>
                 <div class="uc-app" style="display:none">
+
                     <a href="/bj/userstore" class="js-loginElem1" data-gzlog="tracking_type=click&amp;eventid=1015123400000004">收藏车辆</a>
                     <a href="/bj/userreduce" class="js-loginElem2" data-gzlog="tracking_type=click&amp;eventid=1015123400000005">降价提醒</a>
                     <a href="/bj/userhistory" class="js-loginElem3" data-gzlog="tracking_type=click&amp;eventid=1015123400000006">浏览记录</a>
@@ -71,26 +73,7 @@
     </div>
 
 
-    <!-- 登录弹层  s -->
-    <!-- 登录弹框  s -->
-    <div class="pop-box pop-login" id="login1">
-        <div class="pop-close" id="closeLogin1"></div>
-        <p class="pop-tit js-logintitle">瓜子二手车直卖网</p>
-        <ul class="phone-login">
-            <li>
-                <p class="phone-login-tit">手机号码</p>
-                <input class="phone-login-input js-phoneNum1" placeholder="请输入您的手机号码">
-            </li>
-            <li>
-                <p class="phone-login-tit"> 验证码</p>
-                <input class="phone-login-input phone-login-code js-code1" placeholder="请输入验证码">
-                <button class="get-code">获取验证码</button>
-            </li>
-        </ul>
-        <p class="p-error" id="loginError1"></p>
-        <button class="sub-btn js-checkcode">登录</button>
-        <p class="free-phone">免费咨询400-057-8600</p>
-    </div>
+
 
     <!-- 弹框蒙层  s -->
     <div class="pop-mask"></div>
