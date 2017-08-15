@@ -17,8 +17,9 @@
     var logged = false;
 </script>
 <!-- 加载js/css-->
-<script type="text/javascript" src="https://sta.guazistatic.com/c2c_web/base.eda2c2138ae85d99fab0.js"></script>
-<script type="text/javascript" src="https://sta.guazistatic.com/c2c_web/index_v4.bae4aa8ac53fe6334543.js"></script>
+<script type="text/javascript" src="/jquery-easyui-1.5.2/jquery.min.js"></script>
+<script type="text/javascript" src="/home/js/guazi-a.js"></script>
+<script type="text/javascript" src="/home/js/guazi-b.js"></script>
 <body>
 @section('content')
 

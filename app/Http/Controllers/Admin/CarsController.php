@@ -28,10 +28,18 @@ class CarsController extends Controller
 
         return $data;
     }
+//    处理车型
+    public function suv()
+    {
+        $car_id = $_GET['car_id'];
+        $data = DB::table('home_carsort')->where('car_id','=',$car_id)->get();
+        return $data;
+    }
 //    上传车辆图片业务处理
+//    protected $filepath = '';
     public function picUpload()
     {
-        $file = \Input::file('cars_img');
+        $file = \Input::file('cars_img1');
 //      检查文件是否有效
         if($file->isValid()){
 //            文件后缀名
@@ -97,7 +105,41 @@ class CarsController extends Controller
      */
     public function store(Request $request)
     {
-        return 11;
+//        处理上传的数据
+        $input = $request->except('_token','cars_img1');
+
+        //        处理接收数据的业务逻辑
+//    1、获取接收数据 头像另做处理 picUpload()
+        $preg = '/^1[3578]\d{9}$/';
+        $rule = [
+            'user_name'=>'required|between:5,18',
+            'user_phone'=>'required|regex:'.$preg,
+        ];
+        $mess = [
+            'user_name.required'=>'用户名必须输入',
+            'user_name.between'=>'用户名必须在5-18位之间',
+            'user_name.alpha'=>'用户名必须为字母',
+            'user_phone.required'=>'工号必须输入',
+            'user_phone.regex'=>'手机号必须符合长度',
+        ];
+        $validator = Validator::make($input,$rule,$mess);
+//        如果表单验证失败
+        if($validator->fails()){
+            return back()->withErrors($validator)->withInput();
+        }
+//    2、表单验证 Validator::make($input, $rule, $mess);
+//    3、发送ajax
+//    4、如果验证失败，返回继续填写
+
+//    5、成功则更新用户表 同时更新用户角色表 role_user
+        $res = Cars::create($input);
+
+//    6、返回用户列表页
+        if($res){
+            return redirect('admin/cars');
+        }else{
+            return back()->with('errors','商品添加失败')->withInput();
+        }
     }
 
     /**

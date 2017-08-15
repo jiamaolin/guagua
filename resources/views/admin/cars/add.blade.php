@@ -12,10 +12,30 @@
 	<div class="result_wrap">
         <div class="result_title">
             <h3>快捷操作</h3>
+            @if (count($errors) > 0)
+                <div class="mark">
+                    <ul>
+                        @if(is_object($errors))
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        @else
+                            <li>{{ session('errors') }}</li>
+                        @endif
+                    </ul>
+                </div>
+            @endif
         </div>
+        <script>
+            $(function(){
+                $('.mark').fadeOut(5000, function () {
+                    $(this).css('display','none');
+                });
+            })
+        </script>
         <div class="result_content">
             <div class="short_wrap">
-                <a href="#"><i class="fa fa-plus"></i>商品列表</a>
+                <a href="/admin/cars"><i class="fa fa-plus"></i>商品列表</a>
                 <a href="#"><i class="fa fa-recycle"></i>批量删除</a>
                 <a href="#"><i class="fa fa-refresh"></i>更新排序</a>
             </div>
@@ -31,17 +51,17 @@
                     <tr>
                         <th><i class="require">*</i>用户名：</th>
                         <td>
-                            <input type="text" name="user_name">
+                            <input type="text" name="user_name" value="{{ old('user_name') }}">
                         </td>
                         <th><i class="require">*</i>用户电话：</th>
                         <td>
-                            <input type="text" name="user_phone">
+                            <input type="text" name="user_phone" value="{{ old('user_phone') }}">
                             <span><i class="fa fa-exclamation-circle yellow"></i>请准确填写用户联系方式</span>
                             <p>请准确填写用户联系方式</p>
                         </td>
                     </tr>
                     <tr>
-                        <th width="120"><i class="require">*</i>品牌：</th>
+                        <th width="120"><i class="require">*</i>品牌-车系-车型：</th>
                         <td>
                             <select name="cars_pp" id="carsPP">
                                 <option  value="null">==请选择==</option>
@@ -49,90 +69,80 @@
                                 <option class="cars_pp" value="{{ $v->p_id }}">{{ $v->p_name }}</option>
                                     @endforeach
                             </select>
-                            <script type="text/javascript">
-                                $.ajaxSetup({
-                                    headers: {
-                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                    }
-                                });
-
-                                $('#carsPP').change(function(){
-                                    var pid = $(this).val();
-                                    $.ajax({
-//                                        注意路由不要写错,字母不要写错
-                                        url: "/admin/sort",
-                                        type: "POST",
-                                        data: "pid="+pid,
-                                        success: function(data){
-                                            console.log(data);
-
-                                        },
-                                        error: function(XMLHttpRequest, textStatus, errorThrown) {
-                                            alert("选择失败，请检查网络后重试");
-                                        },
-                                        async:true,
-                                    });
-
-
-                                });
-                                /*$.ajax({
-                                    url:,
-                                    type:'get',
-                                    dataType:'json',
-                                    data:{upid:0},
-                                    success:function(data){
-                                        for (var i = 0; i < data.length; i++) {
-                                            $('#cid').append("<option value="+data[i].id+">"+data[i].name+'</option>');
-                                        }
-                                    }
-                                });
-
-                                $("body").on('change','select',function(){
-                                    $(this).nextAll('select').remove();
-                                    var v = $(this).val();
-                                    var name = $(this).attr('name');
-                                    if(v != '==请选择=='){
-                                        var ob = $(this);
-                                        $.ajax({
-                                            url:url,
-                                            type:'get',
-                                            dataType:'json',
-                                            data:{upid:v},
-                                            success:function(data){
-                                                if(data.length>0){
-                                                    if(name == 'province'){
-                                                        var select = $("<select name='city' id='city'><option>---请选择---</option></select>");
-                                                    }else{
-                                                        var select = $("<select name='county' id='county'><option>---请选择---</option></select>");
-                                                    }
-                                                    for (var i = 0; i < data.length; i++) {
-                                                        $(select).append("<option value="+data[i].id+">"+data[i].name+'</option>');
-                                                    }
-                                                    ob.after(select);
-                                                }
-                                            }
-                                        });
-                                    }
-                                });*/
-                            </script>
-                        </td>
-                        <th width="120"><i class="require">*</i>车系：+SUV车型</th>
-                        <td>
-                            <select name="cars_sort">
+                            <select name="cars_sort" id="carssort">
                                 <option value="">==请选择==</option>
-                                @foreach($sort as $k=>$v)
-                                <option value="{{ $v->car_id }}">{{ $v->car_name }}</option>
-                                    @endforeach
+                                {{--@foreach($sort as $k=>$v)
+                                    <option value="{{ $v->car_id }}">{{ $v->car_name }}</option>
+                                @endforeach--}}
                             </select>
                         </td>
+                        
+                        <th><i class="require">*</i>车型：</th>
+                        <td>
+                            <input type="text" id="car_type" name="cars_suv" value="" disabled>
+                        </td>
+
+                        <script type="text/javascript">
+                            $.ajaxSetup({
+                                headers: {
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                }
+                            });
+                            var index = null;
+                            $('#carsPP').change(function () {
+//                                初始化车系
+                                $('#carssort').html('<option value="">==请选择==</option>');
+                                index = $(this).val();//pid
+                                $.ajax({
+//                                        注意路由不要写错,字母不要写错
+                                    url: "/admin/sort",
+                                    type: "POST",
+                                    data: "pid="+index,
+//                                    dateType:'json',
+                                    success: function(data){
+                                        {{--{{json_decode(data)}}--}}
+                                        console.log(data);
+                                        for (var i = 0; i < data.length; i++) {
+                                            $('#carssort').append("<option value="+data[i].car_id+">"+data[i].car_name+'</option>');
+                                        }
+
+                                    },
+                                    error: function(XMLHttpRequest, textStatus, errorThrown) {
+                                        alert("选择失败，请检查网络后重试");
+                                    },
+                                    async:true,
+                                });
+                            });
+                            $('#carssort').change(function(){
+                                index = $(this).val();//car_id
+                                $.ajax({
+//                                        注意路由不要写错,字母不要写错
+                                    url: "/admin/suv",
+                                    type: "get",
+                                    data: "car_id="+index,
+//                                    dateType:'json',
+                                    success: function(data){
+                                        {{--{{json_decode(data)}}--}}
+                                        console.log(data);
+                                        $('#car_type').attr('disabled',null);
+                                        $('#car_type').val(data[0].car_type);
+                                    },
+                                    error: function(XMLHttpRequest, textStatus, errorThrown) {
+                                        alert("选择失败，请检查网络后重试");
+                                    },
+                                    async:true,
+                                });
+                            });
+                    </script>
+
                     </tr>
                     <tr>
                         <th width="120"><i class="require">*</i>年款：</th>
                         <td>
-                            <select name="cars_kuanShi">
+                            <select name="cars_kuanShi" class="require">
                                 <option value="">==请选择==</option>
                                 @foreach($kuanShi as $v)
-                                <option value="{{ $v->kuan_id }}">{{ $v->kuan_type }}</option>
+                                <option value="{{ $v->kuan_type }}">{{ $v->kuan_type }}</option>
                                     @endforeach
                             </select>
                         </td>
@@ -141,7 +151,7 @@
                             <select name="cars_paiLiang">
                                 <option value="">==请选择==</option>
                                 @foreach($paiLiang as  $v)
-                                <option value="{{ $v->pai_id }}">{{ $v->pai_type }}</option>
+                                <option value="{{ $v->pai_type }}">{{ $v->pai_type }}</option>
                                     @endforeach
                             </select>
                         </td>
@@ -152,16 +162,16 @@
                             <select name="cars_bianSu">
                                 <option value="">==请选择==</option>
                                 @foreach($bianSu as $v)
-                                <option value="{{ $v->bian_id }}">{{ $v->bian_type }}</option>
+                                <option value="{{ $v->bian_type }}">{{ $v->bian_type }}</option>
                                     @endforeach
                             </select>
                         </td>
                         <th width="120"><i class="require">*</i>舒适类型：</th>
                         <td>
-                            <select name="cars_shuShi">
+                            <select name="cars_shuShi" class="require">
                                 <option value="">==请选择==</option>
                                 @foreach($shuShi as $v)
-                                <option value="{{ $v->shu_id }}">{{ $v->shu_type }}</option>
+                                <option value="{{ $v->shu_type }}">{{ $v->shu_type }}</option>
                                     @endforeach
                             </select>
                         </td>
@@ -172,7 +182,7 @@
                             <select name="cars_paiFang">
                                 <option value="">==请选择==</option>
                                 @foreach($paiFang as $v)
-                                <option value="{{ $v->fang_id }}">{{ $v->fang_type }}</option>
+                                <option value="{{ $v->fang_type }}">{{ $v->fang_type }}</option>
                                     @endforeach
                             </select>
                         </td>
@@ -184,12 +194,12 @@
                     <tr>
                         <th><i class="require">*</i>过户次数：</th>
                         <td>
-                            <input type="text" class="sm" name="">次
+                            <input type="text" class="sm" name="cars_guoHu" value="{{ old('cars_guoHu') }}">次
                             <span><i class="fa fa-exclamation-circle yellow"></i>这里是短文本长度</span>
                         </td>
                         <th><i class="require">*</i>行驶里程：</th>
                         <td>
-                            <input type="text" name="cars_liCheng"><span>万公里</span>
+                            <input type="text" name="cars_liCheng" value="{{ old('cars_liCheng') }}"><span>万公里</span>
                         </td>
                     </tr>
                     <tr>
@@ -198,7 +208,7 @@
                             <select name="cars_shangPai">
                                 <option value="">==请选择==</option>
                                 @foreach($address as $v)
-                                    <option value="{{ $v->city_id }}">{{ $v->city_name }}</option>
+                                    <option value="{{ $v->city_name }}">{{ $v->city_name }}</option>
                                 @endforeach
                             </select>
                         </td>
@@ -207,7 +217,7 @@
                             <select name="cars_kanChe">
                                 <option value="">==请选择==</option>
                                 @foreach($address as $v)
-                                    <option value="{{ $v->city_id }}">{{ $v->city_name }}</option>
+                                    <option value="{{ $v->city_name }}">{{ $v->city_name }}</option>
                                 @endforeach
                             </select>
                         </td>
@@ -215,29 +225,29 @@
                     <tr>
                         <th><i class="require">*</i>新车价格：</th>
                         <td>
-                            <input type="text" class="sm" name="cars_yuanJia">万元
+                            <input type="text" class="sm" name="cars_yuanJia" value="{{ old('cars_yuanJia') }}">万元
                             <span><i class="fa fa-exclamation-circle yellow"></i>这里是短文本长度</span>
                         </td>
                         <th>车主报价：</th>
                         <td>
-                            <input type="text" class="sm" name="cars_baoJia">万元
+                            <input type="text" class="sm" name="cars_baoJia" value="{{ old('cars_baoJia') }}">万元
                             <span><i class="fa fa-exclamation-circle yellow"></i>这里是默认长度</span>
                         </td>
                     </tr>
                     <tr>
                         <th><i class="require">*</i>强险到期：</th>
                         <td>
-                            <input class="easyui-datebox" name="cars_qiangXian" data-options="formatter:myformatter,parser:myparser" required="required">
+                            <input class="easyui-datebox" value="{{ old('cars_qiangXian') }}" name="cars_qiangXian" data-options="formatter:myformatter,parser:myparser" required="required">
                         </td>
                         <th><i class="require">*</i>商业险到期：</th>
                         <td>
-                            <input type="text" name="cars_shangYe" class="easyui-datebox" required="required" data-options="formatter:myformatter,parser:myparser">
+                            <input type="text" value="{{ old('cars_shangYe') }}" name="cars_shangYe" class="easyui-datebox" required="required" data-options="formatter:myformatter,parser:myparser">
                         </td>
                     </tr>
                     <tr>
                         <th><i class="require">*</i>年检到期：</th>
                         <td>
-                            <input class="easyui-datebox" name="cars_nianJian" required="required" height="20" data-options="formatter:myformatter,parser:myparser">
+                            <input class="easyui-datebox" value="{{  old('cars_nianJian') }}" name="cars_nianJian" required="required" height="20" data-options="formatter:myformatter,parser:myparser">
                         </td>
                         <th><i class="require">*</i>状态(status)：</th>
                         <td>
@@ -252,11 +262,14 @@
                     <tr>
                         <th><i class="require">*</i>主图：</th>
                         <td>
-                            <input id="pic_upload" type="file" name="cars_img" multiple="true">
+                            <input id="pic_upload" type="file" name="cars_img1" multiple="true">
                             <p><img id="img" title="pic" alt="上传后显示图片"></p>
+                            <input id="images" type="hidden" name="cars_img" value="">
                         </td>
-                        <th>请添加车辆详细图片：</th>
-                        <td><input type="button" class="back" onclick="addImg()" value="添加"></td>
+                        <th></th>
+                        <td></td>
+                        {{--<th>请添加车辆详细图片：</th>
+                        <td><input type="button" class="back" onclick="addImg()" value="添加"></td>--}}
                         <script type="text/javascript">
 
                             $(function () {
@@ -283,7 +296,7 @@
                                 formData.append('_token', '{{ csrf_token() }}');
                                 {{-- console.log(formData);--}}
                                 $.ajax({
-                                    url: "/admin/cars",
+                                    url: "/admin/images",
                                     data: formData,
                                     /*dataType:'json',我传的不是json数据*/
                                     type: "POST",
@@ -292,8 +305,9 @@
                                     contentType: false,
                                     processData: false,
                                     success: function(data) {
-                                        console.log(data);
+//                                        console.log(data);
                                         alert("上传成功");
+                                        $('#images').val(data);
                                         $('#img').attr({src:'http://oubnp8yh1.bkt.clouddn.com/'+data, width:"100"});
                                     },
                                     error: function(XMLHttpRequest, textStatus, errorThrown) {

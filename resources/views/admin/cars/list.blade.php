@@ -60,7 +60,7 @@
                             <a href="#">details</a>
                         </td>
                         <td>{{ date('Y-m-d H:i:s',$v->cars_addTime) }}</td>
-                        <td><img src="/" title="主图" alt="" width="80"></td>
+                        <td><img src="http://oubnp8yh1.bkt.clouddn.com/{{ $v->cars_img }}" title="主图" alt="" width="80"></td>
                         <td>
                             @if($v->cars_status == 1)
                                 <button>上架</button>

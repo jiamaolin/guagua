@@ -49,7 +49,8 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>'login.admin'
 //  商品管理业务逻辑
     Route::resource('cars','CarsController');
     Route::post('sort','CarsController@sort');
-    Route::post('cars','CarsController@picUpload');
+    Route::get('suv','CarsController@suv');
+    Route::post('images','CarsController@picUpload');
     Route::put('cars','CarsController@picUpload');
 });
 //前台业务逻辑组
