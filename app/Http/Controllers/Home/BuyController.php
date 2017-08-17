@@ -56,7 +56,7 @@ class BuyController extends Controller
     {
         $cars = $request->all();
         $data = Cars::find($id);
-//        dd($data);
+//        dd($cars);
         return view('home.detail',compact('cars','data'));
     }
 

@@ -18,7 +18,8 @@ class IndexController extends Controller
     public function index()
     {
         $city = DB::table('home_city')->get();
-        return view('home.index',compact('city'));
+        session(['city'=>$city]);
+        return view('home.index');
     }
 
     /**

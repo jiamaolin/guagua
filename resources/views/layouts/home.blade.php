@@ -82,22 +82,15 @@
                             <a baidu_alog="pc_index_city&amp;click&amp;pc_index_hot_city_c" data-gzlog="tracking_type=click&amp;eventid=0020060000000019&amp;select_city=bj" class="on" href="/bj/" title="北京二手车">北京</a>
                         </dd>
                     </dl>
-                    @foreach( $city as $k=>$v)
-                    <dl >
-                        @if(file_exists($v->firstCase))
-                            <script>
-
-                            </script>
-                            <dd>
-                                <a data-gzlog="tracking_type=click&amp;eventid=0020060000000017&amp;select_city=anqing" baidu_alog="pc_index_city&amp;click&amp;pc_index_all_city_c" href="/anqing/" title="{{ $v->city_name }}二手车">{{ $v->city_name }}</a>
-                            </dd>
-                        @else
-                            <dt>{{ $v->firstCase }}</dt>
-                            <dd>
-                                <a data-gzlog="tracking_type=click&amp;eventid=0020060000000017&amp;select_city=anqing" baidu_alog="pc_index_city&amp;click&amp;pc_index_all_city_c" href="/anqing/" title="{{ $v->city_name }}二手车">{{ $v->city_name }}</a>
-                            </dd>
-                        @endif
-
+                    @foreach( session('city') as $k=>$v)
+                    <dl>
+                        <dt>{{ $v->firstCase }}</dt>
+                        <dd>
+                            @foreach(explode(',',$v->city_name) as $k=>$value)
+                            <a data-gzlog="tracking_type=click&amp;eventid=0020060000000017&amp;select_city=anqing" baidu_alog="pc_index_city&amp;click&amp;pc_index_all_city_c" href="/anqing/" title="{{ $value }}二手车">{{ $value }}</a>
+                                &nbsp;
+                            @endforeach
+                        </dd>
                     </dl>
                     @endforeach
                 </div>
@@ -133,8 +126,16 @@
                 <a class="fl " baidu_alog="pc_index_top_tab&amp;click&amp;pc_index_top_tab_intro_c" href="/home/intro/" data-gzlog="tracking_type=click&amp;eventid=0010000000000010">瓜子服务</a>
                 <a class="fl " baidu_alog="pc_index_top_tab&amp;click&amp;pc_index_top_tab_sell_c" href="/home/sell/?clueS=01" data-gzlog="tracking_type=click&amp;eventid=0010050000000009">我要卖车</a>
                 <a class="fl " baidu_alog="pc_index_top_tab&amp;click&amp;pc_index_top_tab_buy_c" href="/home/buy/" data-gzlog="tracking_type=click&amp;eventid=0010000000000008">我要买车</a>
-                <a class="fl active" baidu_alog="pc_index_top_tab&amp;click&amp;pc_index_top_tab_index_c" href="{{ url('/home/index') }}" data-gzlog="tracking_type=click&amp;eventid=0010000000000007">首页</a>
+                <a class="fl " baidu_alog="pc_index_top_tab&amp;click&amp;pc_index_top_tab_index_c" href="{{ url('/home/index') }}" data-gzlog="tracking_type=click&amp;eventid=0010000000000007">首页</a>
             </div>
+            <script>
+                $('.fl').click(function () {
+//                    location.href;
+                    $(this).addClass('active');
+                    $(this).siblings().removeClass('active');
+
+                });
+            </script>
         </div>
     </div>
 

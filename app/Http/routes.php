@@ -101,5 +101,14 @@ Route::group(['prefix'=>'home','namespace'=>'Home'],
 
 
 
+
+
+
+
+
+
+
+
+
 //我要买车
 Route::resource('home/buy','Home\BuyController');

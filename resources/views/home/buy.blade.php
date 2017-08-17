@@ -2,6 +2,7 @@
 @section('title','我要买车')
 @section('head','tracker="{"pagetype":"list","qpres":"search qpres","cpres":"search cpres","expids":"{ranker_id=0, predictor_id=0, retriever_id=0, rewriter_id=0, rank_sorter_id=0}"}"')
 @section('content')
+
 @parent
 
 <div class="list-wrap js-post">
@@ -177,15 +178,29 @@
                         {{ $v->cars_baoJia }}
                         <span>万</span>
                     </p>
-                    <i class="i-orange">超值</i>
-                    <i class="i-red">急售</i>
+                    @if($v->cars_status ==1 )
+                        <i class="i-orange">超值</i>
+                    @elseif($v->cars_status == 0)
+                        即将
+                        <i class="i-red">急售</i>
+                    @else
+                        新品
+                    @endif
+
                     <em class="line-through">{{ $v->cars_yuanJia }}万</em>
                 </div>
                 <em class="icon-sale">
-                    急降
-                    <br>
-                    <span>2000</span>
-                    元
+                    @if($v->cars_status ==1 )
+                        超值
+                    @elseif($v->cars_status == 0)
+                        即将
+                        <br>
+                        <span>3000元</span>
+                    @else
+                        新品
+                    @endif
+
+
                 </em>
             </a>
         </li>

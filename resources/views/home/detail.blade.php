@@ -54,13 +54,13 @@
                 >
                 <a href="//www.guazi.com/bj/buy/" data-gzlog="tracking_type=click&eventid=0220050000099000">北京二手车</a>
                 >
-                <a href="//www.guazi.com/bj/dazhong/" data-gzlog="tracking_type=click&eventid=0220050000099000">北京大众二手车</a>
+                <a href="//www.guazi.com/bj/dazhong/" data-gzlog="tracking_type=click&eventid=0220050000099000">北京{{ $cars['pp'] }}二手车</a>
                 >
-                <a href="//www.guazi.com/bj/maiteng/" data-gzlog="tracking_type=click&eventid=0220050000099000">北京二手大众迈腾</a>
-                > 大众迈腾 2017款 330TSI DSG 豪华型
+                <a href="//www.guazi.com/bj/maiteng/" data-gzlog="tracking_type=click&eventid=0220050000099000">北京二手{{ $cars['pp'].$cars['sort'] }}</a>
+                > {{ $cars['pp'].$cars['sort'] }}&nbsp; {{ $data->cars_kuanShi }} &nbsp; {{ $data->paiLiang }} &nbsp; {{ $data->bianSu }} &nbsp; {{ $data->shuShi }}
             </div>
             <div class="right-carnumber">
-                车源号：HC-13607509
+                车源号：HC-13607214
                 <span class="car-error js-feedback" data-gzlog="tracking_type=click&eventid=0220050000099003">
                     <span class="icon-glass"></span>
                     车源信息纠错
@@ -73,8 +73,16 @@
             <div id="page-slide" class="product-detail" data-group-count="4">
                 <div class="bigimgbox">
                     <span class="icon-jijiang">
-                        <i class="f22">急降</i>
-                        <i class="f18">2000元</i>
+                        @if($data->cars_status ==1 )
+                            超值
+                        @elseif($data->cars_status == 0)
+                            <i class="f22">急降</i>
+                            <i class="f18">3000元</i>
+                        @else
+                            新品
+                        @endif
+
+
                     </span>
                     <a class="icon-warn js-notice" href="javascript:" data-gzlog="tracking_type=click&eventid=1012123400000003">降价提醒</a>
                     <a class="icon-collect-star js-carcollect " href="javascript:" data-gzlog="tracking_type=click&eventid=1015123400000010"></a>
@@ -88,10 +96,10 @@
 
                     <ul class="det-picside js-picside">
                         <li class="js-bigpic" data-role="img" data-index="0" style="display: list-item;">
-                            <img data-src="https://image1.guazistatic.com/qn170619143034dc5642f9cd3e64bb2c8f5e80d018ccf7.jpg?imageView2/1/w/600/h/400/q/88" alt="大众迈腾 2017款 330TSI DSG 豪华型" src="https://image1.guazistatic.com/qn170619143034dc5642f9cd3e64bb2c8f5e80d018ccf7.jpg?imageView2/1/w/600/h/400/q/88" data-gzlog="tracking_type=click&eventid=0220050000099001">
+                            <img data-src="" alt="{{ $cars['pp'].$cars['sort'] }} {{ $data->cars_kuanShi }} {{ $data->cars_paiLiang }} {{ $data->cars_bianSu }} {{ $data->cars_shuShi }}" src="http://oubnp8yh1.bkt.clouddn.com/{{ $data->cars_img }}" data-gzlog="tracking_type=click&eventid=0220050000099001">
                         </li>
                         <li class="js-bigpic" data-role="img" data-index="1" style="display: none;">
-                            <img data-src="https://image1.guazistatic.com/qn170619143033379770d71d679fbf7d762e6f869f06b6.jpg?imageView2/1/w/600/h/400/q/88" alt="大众迈腾 2017款 330TSI DSG 豪华型" src="https://image1.guazistatic.com/qn170619143033379770d71d679fbf7d762e6f869f06b6.jpg?imageView2/1/w/600/h/400/q/88" data-gzlog="tracking_type=click&eventid=0220050000099001">
+                            <img data-src="" alt="{{ $cars['pp'].$cars['sort'] }} {{ $data->cars_kuanShi }} {{ $data->cars_paiLiang }}" src="http://oubnp8yh1.bkt.clouddn.com/{{ $data->cars_img }}" data-gzlog="tracking_type=click&eventid=0220050000099001">
                         </li>
                     </ul>
                 </div>
@@ -102,7 +110,7 @@
                             <ul class="clearfix" data-role="tabImgGroup" data-tab="1" style="position:relative;">
                                 <li class="js-hover active onimg" data-role="thumb" data-hover="" data-click="">
                                     <span class="green-border"></span>
-                                    <img src="https://image1.guazistatic.com/qn170619143034dc5642f9cd3e64bb2c8f5e80d018ccf7.jpg?imageView2/1/w/120/h/80/q/88">
+                                    <img src="http://oubnp8yh1.bkt.clouddn.com/{{ $data->cars_img }}">
                                 </li>
                                 <li class="js-hover" data-role="thumb" data-hover="" data-click="">
                                     <span class="green-border"></span>
@@ -118,28 +126,35 @@
 
             <div class="product-textbox">
                 <div class="titlebox">
-                    <p>大众迈腾 2017款 330TSI DSG 豪华型</p>
-                    <span class="labels">降价急售</span>
-                    <span class="labels">准新车</span>
-                    <span class="labels">0过户</span>
+                    <p>{{ $cars['pp'].$cars['sort'] }} {{ $data->cars_kuanShi }} {{ $data->cars_paiLiang }} {{ $data['cars_bianSu'] }} {{ $data->cars_shuShi }}</p>
+                    @if($data->cars_status ==1 )
+                        <span class="labels">准新车  超值</span>
+                    @elseif($data->cars_status == 0)
+                        <span class="labels">降价急售</span>
+                    @else
+                        <span class="labels">准新车</span>
+                    @endif
+
+
+                    <span class="labels">{{ $data->cars_guoHu }}过户</span>
                 </div>
 
                 <ul class="assort clearfix">
                     <li class="one">
-                        <span>2017-03</span>
+                        <span>{{ substr($data->cars_time,0,7) }}</span>
                         上牌时间
                     </li>
                     <li class="two">
-                        <span>0.43万公里</span>
+                        <span>{{ $data->cars_liCheng }}万公里</span>
                         表显里程
                     </li>
                     <li class="three">
-                        <span>北京</span>
+                        <span>{{ $data->cars_shangPai }}</span>
                         上牌地
                     </li>
                     <li class="four em-sta detailHoverTips js-detailHoverTips">
                         <span>
-                            国五
+                            {{ $data->cars_paiFang }}
                             <em class="tip-icon js-tip-icon1"></em>
                             <span id="layer-tip" class="layer-tip bottom-layer js-layer-tip1" style="width:233px;height:43px;">
                                 <i class="icon-small-sanjiao"></i>
@@ -152,7 +167,7 @@
                         </a>
                     </li>
                     <li class="last">
-                        <span>自动</span>
+                        <span>{{ $data->cars_bianSu }}</span>
                         变速箱
                     </li>
                 </ul>
@@ -160,10 +175,10 @@
                 <div class="pricebox js-disprice">
                     <i class="ico-type">车主报价：</i>
                     <span class="pricestype">
-                        ¥23.00
+                        ¥{{ $data->cars_baoJia }}
                         <span class="f14">万</span>
                     </span>
-                    <span class="newcarprice"> 新车指导价25.50万(含税)</span>
+                    <span class="newcarprice"> 新车指导价{{ $data->cars_yuanJia }}万(含税)</span>
                     <span class="tip-icon js-tip-icon3">
                         <span class="layer-tip bottom-layer js-layer-tip3" style="display:none">
                             <i class="icon-small-sanjiao"></i>
@@ -173,10 +188,10 @@
                 </div>
 
                 <div class="js-loan">
-                    <a class="loanbox" href="javascript:void();" data-role="viewjr" source-id="2112100" city-domain="bj" data-gzlog="tracking_type=click&eventid=0460310000000073&carid=13607509">
+                    <a class="loanbox" href="javascript:void(0);" data-role="viewjr" source-id="2112100" city-domain="bj" data-gzlog="tracking_type=click&eventid=0460310000000073&carid=13607509">
                         <span class="icon-man"></span>首付
-                        <span class="f22">6.9</span>万
-                        <span class="monthpad">月供5814元</span>
+                        <span class="f22">{{ $data->cars_baoJia *0.3 }}</span>万
+                        <span class="monthpad">月供{{ ($data->cars_baoJia +20000)/36 }}元</span>
                         <span class="text-r">
                             贷款详情
                             <i class="icon-green-right7x11"></i>
@@ -224,7 +239,7 @@
 
                     <div class="car-fuwu">
                         <i class="ico-txt">服务费：</i>
-                        <span>9200元（车价x4%，最低3500元） </span>
+                        <span>{{ $data['cars_baoJia'] }}元（车价x4%，最低3500元） </span>
                     </div>
                 </div>
 
