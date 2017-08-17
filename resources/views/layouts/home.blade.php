@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<head _tracker='{"pagetype":"index"}'>
+<head _tracker='{"pagetype":"index"}' @yield('head')>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="renderer" content="webkit">
     <title>@yield('title')</title>
@@ -12,7 +12,7 @@
     <meta name="sogou_site_verification" content="qY406sTreO"/>
     <meta name="shenma-site-verification" content="7b096264bff0cf1031a570c37abed00c_1476775946">
     <link rel="shortcut icon" type="image/x-icon" href="https://www.guazi.com/favicon.ico" media="screen" />
-</head>
+
 <script>
     var logged = false;
 </script>
@@ -20,8 +20,104 @@
 <script type="text/javascript" src="/jquery-easyui-1.5.2/jquery.min.js"></script>
 <script type="text/javascript" src="/home/js/guazi-a.js"></script>
 <script type="text/javascript" src="/home/js/guazi-b.js"></script>
-<body>
+    <link rel="stylesheet" href="/home/css/guazibuy.css" type="text/css">
+    <link rel="stylesheet" href="/home/css/guazibuy1.css" type="text/css">
+    <link rel="stylesheet" href="/home/css/guazibuy2.css" type="text/css">
+    <link rel="stylesheet" href="/home/css/guazibuy3.css" type="text/css">
+    <link rel="stylesheet" href="/home/css/guazibuy4.css" type="text/css">
+    <link rel="stylesheet" href="/home/css/guazibuy5.css" type="text/css">
+    <link rel="stylesheet" href="/home/css/guazibuy6.css" type="text/css">
+    <link rel="stylesheet" href="/home/css/guazibuy7.css" type="text/css">
+    <link rel="stylesheet" href="/home/css/guazibuy8.css" type="text/css">
+    <link rel="stylesheet" href="/home/css/guazibuy9.css" type="text/css">
+    <link rel="stylesheet" href="/home/css/guazibuy10.css" type="text/css">
+    <link rel="stylesheet" href="/home/css/guazibuy11.css" type="text/css">
+    <link rel="stylesheet" href="/home/css/guazibuy12.css" type="text/css">
+    <link rel="stylesheet" href="/home/css/guazibuy13.css" type="text/css">
+    <link rel="stylesheet" href="/home/css/guazibuy14.css" type="text/css">
+    <link rel="stylesheet" href="/home/css/guazibuy15.css" type="text/css">
+    <link rel="stylesheet" href="/home/css/guazibuy16.css" type="text/css">
+    <link rel="stylesheet" href="/home/css/guazibuy17.css" type="text/css">
+    <link rel="stylesheet" href="/home/css/guazibuy18.css" type="text/css">
+    <link rel="stylesheet" href="/home/css/guazibuy19.css" type="text/css">
+</head>
+
 @section('content')
+
+    <div id="jstop" class="header-2">
+        <div class="header">
+            <h1>
+                <a href="{{ url('/home/index') }}" title="瓜子二手车">瓜子二手车</a>
+            </h1>
+
+            <div class="city" id="city">
+                <!-- 鼠标悬停 .city添加class名active -->
+                <p class="city-curr">
+                    北京<i></i>
+                </p>
+                <script type="text/javascript">
+                    $('#city').hover(
+                        function () {
+                            $(this).addClass('active');
+                        },
+                        function () {
+                            $(this).removeClass('active');
+                        }
+                    );
+                </script>
+                <div class="white-line"></div>
+                <!--        class:all-city的作用是局部滚动不影响整体滚动-->
+                <div class="city-box all-city">
+                    <dl class="bdb-n">
+                        <dt class="green-tit">周边</dt>
+                        <dd>
+                            <a data-gzlog="tracking_type=click&amp;eventid=0020060000000018&amp;select_city=hengshui" baidu_alog="pc_index_city&amp;click&amp;pc_index_around_city_c" href="/hengshui/" title="衡水二手车">衡水</a><a data-gzlog="tracking_type=click&amp;eventid=0020060000000018&amp;select_city=langfang" baidu_alog="pc_index_city&amp;click&amp;pc_index_around_city_c" href="/langfang/" title="廊坊二手车">廊坊</a>
+                        </dd>
+                    </dl>
+                    <dl class="bdb-s">
+                        <dt class="green-tit">热门</dt>
+                        <dd>
+                            <a baidu_alog="pc_index_city&amp;click&amp;pc_index_quanguo_c" data-gzlog="tracking_type=click&amp;eventid=0020060000000021" href="/www/" title="全国二手车">全国</a>
+                            <a baidu_alog="pc_index_city&amp;click&amp;pc_index_hot_city_c" data-gzlog="tracking_type=click&amp;eventid=0020060000000019&amp;select_city=bj" class="on" href="/bj/" title="北京二手车">北京</a>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>A</dt>
+                        <dd>
+                            <a data-gzlog="tracking_type=click&amp;eventid=0020060000000017&amp;select_city=anqing" baidu_alog="pc_index_city&amp;click&amp;pc_index_all_city_c" href="/anqing/" title="安庆二手车">安庆</a>
+                        </dd>
+                    </dl>
+
+                </div>
+            </div>
+
+            <div class="header-phone">
+                <!--电话判断，当页面处于汽车金融则显示汽车金融电话  -->
+                400-057-8600</div>
+
+            <div class="uc js-uc js-uc-new" data-gzlog="tracking_type=click&amp;eventid=1015123400000003">
+                <a href="{{ url('/home/login')}}" >登录</a>
+                <a href="{{ url('/home/phoneregister')}}" >注册</a>
+                <div class="uc-app" style="display:none">
+
+                    <a href="/bj/userstore" class="js-loginElem1" data-gzlog="tracking_type=click&amp;eventid=1015123400000004">收藏车辆</a>
+                    <a href="/bj/userreduce" class="js-loginElem2" data-gzlog="tracking_type=click&amp;eventid=1015123400000005">降价提醒</a>
+                    <a href="/bj/userhistory" class="js-loginElem3" data-gzlog="tracking_type=click&amp;eventid=1015123400000006">浏览记录</a>
+                    <a href="javascript:;" class="js-logout js-loginElem4" data-gzlog="tracking_type=click&amp;eventid=1015123400000007">退出</a>
+                    <i></i>
+                </div>
+            </div>
+
+            <div class="nav-list">
+                <a class="fl " href="/home/ask" data-gzlog="tracking_type=click&amp;eventid=0010000000000012" title="瓜子问答">瓜子问答</a>
+                <a class="fr " baidu_alog="pc_index_top_tab&amp;click&amp;pc_index_top_tab_carfina_c" href="http://jr.guazi.com/bj/?jr_from=homehead&amp;platform=pc" data-gzlog="tracking_type=click&amp;eventid=0010000000000011">瓜子金融</a>
+                <a class="fl " baidu_alog="pc_index_top_tab&amp;click&amp;pc_index_top_tab_intro_c" href="/home/intro/" data-gzlog="tracking_type=click&amp;eventid=0010000000000010">瓜子服务</a>
+                <a class="fl " baidu_alog="pc_index_top_tab&amp;click&amp;pc_index_top_tab_sell_c" href="/home/sell/?clueS=01" data-gzlog="tracking_type=click&amp;eventid=0010050000000009">我要卖车</a>
+                <a class="fl " baidu_alog="pc_index_top_tab&amp;click&amp;pc_index_top_tab_buy_c" href="/home/buy/" data-gzlog="tracking_type=click&amp;eventid=0010000000000008">我要买车</a>
+                <a class="fl active" baidu_alog="pc_index_top_tab&amp;click&amp;pc_index_top_tab_index_c" href="{{ url('/home/index') }}" data-gzlog="tracking_type=click&amp;eventid=0010000000000007">首页</a>
+            </div>
+        </div>
+    </div>
 
 @show
 <!-- 底部  s -->
