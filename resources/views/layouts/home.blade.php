@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html>
 <head _tracker='{"pagetype":"index"}' @yield('head')>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="renderer" content="webkit">
@@ -41,7 +42,7 @@
     <link rel="stylesheet" href="/home/css/guazibuy18.css" type="text/css">
     <link rel="stylesheet" href="/home/css/guazibuy19.css" type="text/css">
 </head>
-
+<body>
 @section('content')
 
     <div id="jstop" class="header-2">
@@ -81,23 +82,41 @@
                             <a baidu_alog="pc_index_city&amp;click&amp;pc_index_hot_city_c" data-gzlog="tracking_type=click&amp;eventid=0020060000000019&amp;select_city=bj" class="on" href="/bj/" title="北京二手车">北京</a>
                         </dd>
                     </dl>
-                    <dl>
-                        <dt>A</dt>
-                        <dd>
-                            <a data-gzlog="tracking_type=click&amp;eventid=0020060000000017&amp;select_city=anqing" baidu_alog="pc_index_city&amp;click&amp;pc_index_all_city_c" href="/anqing/" title="安庆二手车">安庆</a>
-                        </dd>
-                    </dl>
+                    @foreach( $city as $k=>$v)
+                    <dl >
+                        @if(file_exists($v->firstCase))
+                            <script>
 
+                            </script>
+                            <dd>
+                                <a data-gzlog="tracking_type=click&amp;eventid=0020060000000017&amp;select_city=anqing" baidu_alog="pc_index_city&amp;click&amp;pc_index_all_city_c" href="/anqing/" title="{{ $v->city_name }}二手车">{{ $v->city_name }}</a>
+                            </dd>
+                        @else
+                            <dt>{{ $v->firstCase }}</dt>
+                            <dd>
+                                <a data-gzlog="tracking_type=click&amp;eventid=0020060000000017&amp;select_city=anqing" baidu_alog="pc_index_city&amp;click&amp;pc_index_all_city_c" href="/anqing/" title="{{ $v->city_name }}二手车">{{ $v->city_name }}</a>
+                            </dd>
+                        @endif
+
+                    </dl>
+                    @endforeach
                 </div>
             </div>
 
             <div class="header-phone">
                 <!--电话判断，当页面处于汽车金融则显示汽车金融电话  -->
                 400-057-8600</div>
-
             <div class="uc js-uc js-uc-new" data-gzlog="tracking_type=click&amp;eventid=1015123400000003">
-                <a href="{{ url('/home/login')}}" >登录</a>
-                <a href="{{ url('/home/phoneregister')}}" >注册</a>
+                @if (session('user'))
+
+                    <a href="{{ url('/home/detail')}}" >{{session('user')->user_name}}</a>
+                    <a href="{{ url('/home/quit')}}" >退出</a>
+                @else
+                    <div>
+                        <a href="{{ url('/home/login')}}" >登录</a>
+                        <a href="{{ url('/home/phoneregister')}}" >注册</a>
+                    </div>
+                @endif
                 <div class="uc-app" style="display:none">
 
                     <a href="/bj/userstore" class="js-loginElem1" data-gzlog="tracking_type=click&amp;eventid=1015123400000004">收藏车辆</a>

@@ -2,7 +2,6 @@
 @section('title','瓜子首页')
 @section('content')
 
-<body>
 {{--视频--}}
 <div class="index-top-video js-video active" data-play="0" style="display: block;">
     <div class="w1200">
@@ -28,9 +27,6 @@
     <input type="hidden" id="clueData" data-puid="" data-city-id="12">
 
         @parent
-
-
-
 
     <!-- 弹框蒙层  s -->
     <div class="pop-mask"></div>

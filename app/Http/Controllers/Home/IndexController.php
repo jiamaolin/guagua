@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class IndexController extends Controller
 {
@@ -16,7 +17,8 @@ class IndexController extends Controller
      */
     public function index()
     {
-        return view('home.index');
+        $city = DB::table('home_city')->get();
+        return view('home.index',compact('city'));
     }
 
     /**
