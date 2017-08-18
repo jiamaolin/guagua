@@ -20,11 +20,6 @@
         </script>
     </div>
 </div>
-<div class="index-header">
-    <!-- header  s -->
-    <input type="hidden" id="skipKindNew" value="0">
-    <!--<input type="hidden" id="firstSubLogin" value="0">-->
-    <input type="hidden" id="clueData" data-puid="" data-city-id="12">
 
         @parent
 

@@ -17,4 +17,11 @@ class HomeUser extends Model
 //    public $fillable = ['post'];
 //    黑名单
     protected $guarded = [];
+
+
+    //  public function cars()
+    // {
+    //     return $this->belongsToMany('App\Cars');
+    // }
+
 }

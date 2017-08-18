@@ -3,8 +3,10 @@
 @section('head','tracker="{"pagetype":"list","qpres":"search qpres","cpres":"search cpres","expids":"{ranker_id=0, predictor_id=0, retriever_id=0, rewriter_id=0, rank_sorter_id=0}"}"')
 @section('content')
 
-@parent
 
+@parent
+{{--加载头部信息--}}
+</div>
 <div class="list-wrap js-post">
     <div id="bread" class="crumbs-search">
         <div class="crumbs">
@@ -228,4 +230,5 @@
     </div>
 </div>
 @endsection
+
 

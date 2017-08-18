@@ -55,9 +55,17 @@ class LoginController extends Controller
            return back()->with('error','密码错误');
         }
 
+
+        if($user['user_status'] === 2 ){
+            return back()->with('error','此号因违规操作，禁止登陆');
+        }
+
+
+
         session(['user'=>$user]);
 
         return redirect('/home/index');
+
 
     }
 

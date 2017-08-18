@@ -16,4 +16,11 @@ class Cars extends Model
 //    public $fillable = ['post'];
 //    黑名单
     protected $guarded = [];
+
+
+     public function user()
+    {
+        return $this->belongsToMany('App\HomeUser');
+    }
+
 }

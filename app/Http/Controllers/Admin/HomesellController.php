@@ -1,33 +1,33 @@
 <?php
 
-namespace App\Http\Controllers\Home;
-
-
-use App\Http\Model\Cars;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use DB;
+use App\Http\Model\UserSell;
 
-use Illuminate\Support\Facades\DB;
-
-
-class BuyController extends Controller
+class HomesellController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-
-
-        $cars = DB::table('home_cars')->leftJoin('home_carpp','home_cars.cars_pp','=','home_carpp.p_id')->leftJoin('home_carsort','home_cars.cars_sort','=','home_carsort.car_id')->get();
-//        dd($cars);
-        return view('home.buy',['cars'=>$cars]);
-
+        //
+        // return 111;
+        $sell = DB::table('user_sell')
+            ->join('home_carpp', 'pp_id', '=', 'p_id')
+            
+            ->where('home_user_name','like','%'.$request['keywords'].'%')
+            ->paginate(5);
+            // dd($sell);
+        $keyword = $request->input('keywords');
+        return view('admin.home-user.sell',compact('sell','keyword'));
     }
 
     /**
@@ -57,15 +57,10 @@ class BuyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
-    public function show($id,Request $request)
+    public function show($id)
     {
-        $cars = $request->all();
-        $data = Cars::find($id);
-//        dd($cars);
-        return view('home.detail', compact('cars', 'data'));
+        //
     }
-
 
     /**
      * Show the form for editing the specified resource.
@@ -76,6 +71,9 @@ class BuyController extends Controller
     public function edit($id)
     {
         //
+        $sell = UserSell::find($id);
+        dd($sell);
+
     }
 
     /**

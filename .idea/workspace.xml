@@ -34,7 +34,10 @@
       <file leaf-file-name="routes.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
 <<<<<<< 390f780cbaf2d82812571a18f20e2ec40feee06a
+=======
+>>>>>>> origin/sunyusheng
             <state relative-caret-position="0">
               <caret line="42" column="8" lean-forward="true" selection-start-line="42" selection-start-column="8" selection-end-line="42" selection-end-column="8" />
 =======
@@ -45,10 +48,13 @@
             <state relative-caret-position="1050">
               <caret line="51" column="15" lean-forward="false" selection-start-line="51" selection-start-column="11" selection-end-line="51" selection-end-column="15" />
 >>>>>>> origin/sys
+<<<<<<< HEAD
 =======
             <state relative-caret-position="988">
               <caret line="100" column="0" lean-forward="true" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
 >>>>>>> aaaaa
+=======
+>>>>>>> origin/sunyusheng
               <folding />
             </state>
           </provider>
@@ -86,7 +92,10 @@
       <file leaf-file-name="CarsController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/CarsController.php">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
 <<<<<<< 390f780cbaf2d82812571a18f20e2ec40feee06a
+=======
+>>>>>>> origin/sunyusheng
 <<<<<<< HEAD
             <state relative-caret-position="2052">
               <caret line="108" column="0" lean-forward="false" selection-start-line="108" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
@@ -97,11 +106,14 @@
               <folding>
                 <element signature="e#46#70#0#PHP" expanded="true" />
               </folding>
+<<<<<<< HEAD
 =======
             <state relative-caret-position="228">
               <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="41" />
               <folding />
 >>>>>>> aaaaa
+=======
+>>>>>>> origin/sunyusheng
             </state>
           </provider>
         </entry>
@@ -127,6 +139,7 @@
       <file leaf-file-name="index.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/home/index.blade.php">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
 <<<<<<< 390f780cbaf2d82812571a18f20e2ec40feee06a
 <<<<<<< HEAD
             <state relative-caret-position="76">
@@ -135,6 +148,11 @@
             <state relative-caret-position="380">
               <caret line="51" column="24" lean-forward="true" selection-start-line="51" selection-start-column="24" selection-end-line="51" selection-end-column="24" />
 >>>>>>> aaaaa
+=======
+<<<<<<< HEAD
+            <state relative-caret-position="76">
+              <caret line="4" column="10" lean-forward="false" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
+>>>>>>> origin/sunyusheng
               <folding />
 =======
             <state relative-caret-position="400">
@@ -211,12 +229,18 @@
         <option value="$PROJECT_DIR$/config/filesystems.php" />
 <<<<<<< HEAD
         <option value="$PROJECT_DIR$/.env" />
+<<<<<<< HEAD
 <<<<<<< 390f780cbaf2d82812571a18f20e2ec40feee06a
 =======
         <option value="$PROJECT_DIR$/app/Http/routes.php" />
 >>>>>>> origin/sys
 =======
 >>>>>>> aaaaa
+=======
+=======
+        <option value="$PROJECT_DIR$/app/Http/routes.php" />
+>>>>>>> origin/sys
+>>>>>>> origin/sunyusheng
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/UserController.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/cars/list.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/cars/add.blade.php" />
@@ -224,7 +248,10 @@
 <<<<<<< HEAD
         <option value="$PROJECT_DIR$/resources/views/admin/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/home.blade.php" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/app/Http/routes.php" />
+=======
+>>>>>>> origin/sunyusheng
         <option value="$PROJECT_DIR$/resources/views/home/index.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/routes.php" />
 =======
@@ -675,7 +702,10 @@
       <updated>1501672190750</updated>
       <workItem from="1501672192266" duration="23465000" />
       <workItem from="1501807626099" duration="81267000" />
+<<<<<<< HEAD
 <<<<<<< 390f780cbaf2d82812571a18f20e2ec40feee06a
+=======
+>>>>>>> origin/sunyusheng
 <<<<<<< HEAD
       <workItem from="1502413255775" duration="77303000" />
       <workItem from="1502847212726" duration="360000" />
@@ -683,22 +713,31 @@
       <workItem from="1502413255775" duration="54074000" />
       <workItem from="1502710767239" duration="874000" />
 >>>>>>> origin/sys
+<<<<<<< HEAD
 =======
       <workItem from="1502413255775" duration="81410000" />
 >>>>>>> aaaaa
+=======
+>>>>>>> origin/sunyusheng
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
 <<<<<<< 390f780cbaf2d82812571a18f20e2ec40feee06a
+=======
+>>>>>>> origin/sunyusheng
 <<<<<<< HEAD
     <option name="totallyTimeSpent" value="182395000" />
 =======
     <option name="totallyTimeSpent" value="159680000" />
 >>>>>>> origin/sys
+<<<<<<< HEAD
 =======
     <option name="totallyTimeSpent" value="186142000" />
 >>>>>>> aaaaa
+=======
+>>>>>>> origin/sunyusheng
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -710,10 +749,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
+<<<<<<< HEAD
 <<<<<<< 390f780cbaf2d82812571a18f20e2ec40feee06a
 <<<<<<< HEAD
 =======
 >>>>>>> aaaaa
+=======
+<<<<<<< HEAD
+>>>>>>> origin/sunyusheng
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
 =======
@@ -1138,7 +1181,10 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
 <<<<<<< 390f780cbaf2d82812571a18f20e2ec40feee06a
+=======
+>>>>>>> origin/sunyusheng
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/CarsController.php">
       <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
@@ -1154,8 +1200,11 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
 =======
 >>>>>>> aaaaa
+=======
+>>>>>>> origin/sunyusheng
     <entry file="file://$PROJECT_DIR$/resources/views/layouts/home.blade.php">
       <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
@@ -1203,6 +1252,7 @@
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/resources/views/home/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="380">
           <caret line="51" column="24" lean-forward="true" selection-start-line="51" selection-start-column="24" selection-end-line="51" selection-end-column="24" />
           <folding />
@@ -1213,13 +1263,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="228">
           <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="41" />
+=======
+        <state relative-caret-position="76">
+          <caret line="4" column="10" lean-forward="false" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
+>>>>>>> origin/sunyusheng
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
 <<<<<<< 390f780cbaf2d82812571a18f20e2ec40feee06a
+=======
+>>>>>>> origin/sunyusheng
         <state relative-caret-position="0">
           <caret line="42" column="8" lean-forward="true" selection-start-line="42" selection-start-column="8" selection-end-line="42" selection-end-column="8" />
 =======
@@ -1228,10 +1285,13 @@
         <state relative-caret-position="25">
           <caret line="1" column="14" lean-forward="false" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="14" />
 >>>>>>> origin/sys
+<<<<<<< HEAD
 =======
         <state relative-caret-position="988">
           <caret line="100" column="0" lean-forward="true" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
 >>>>>>> aaaaa
+=======
+>>>>>>> origin/sunyusheng
           <folding />
         </state>
       </provider>

@@ -5,6 +5,7 @@
     <script type="text/javascript" src="https://sta.guazistatic.com/c2c_web/base.eda2c2138ae85d99fab0.js"></script>
     <script type="text/javascript" src="https://sta.guazistatic.com/c2c_web/detail_v4.1b2cf081fc8355d3e087.js"></script>
     @parent
+    </div>
     <style>
         body{ color:#495056;}
         .center{ margin:0 auto; width:1200px;}

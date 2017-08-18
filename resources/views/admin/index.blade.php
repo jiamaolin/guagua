@@ -46,12 +46,19 @@
 				</ul>
 			</li>
 			<li>
+<<<<<<< HEAD
 				<h3><i class="fa fa-fw fa-x fa-image"></i>轮播图</h3>
 				<ul class="sub_menu">
 					<li><a href="" target="main"><i class="fa fa-fw fa-plus-square"></i>轮播图添加</a></li>
 					<li><a href="" target="main"><i class="fa fa-fw fa-chain"></i>轮播列表</a></li>
 					<li><a href="" target="main"><i class="fa fa-fw fa-tachometer"></i>最新浏览</a></li>
 					<li><a href="" target="main"><i class="fa fa-fw fa-tags"></i>其他组件</a></li>
+=======
+				<h3><i class="fa fa-fw fa-x fa-image"></i>前台用户管理</h3>
+				<ul class="sub_menu">
+					<li><a href="{{url('/admin/homeuser')}}" target="main"><i class="fa fa-fw fa-tachometer"></i>用户列表</a></li>
+					<li><a href="{{url('/admin/homesell')}}" target="main"><i class="fa fa-fw fa-tags"></i>前台用户车辆</a></li>
+>>>>>>> origin/sunyusheng
 				</ul>
 			</li>
             <li>

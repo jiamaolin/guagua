@@ -52,7 +52,26 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>'login.admin'
     Route::get('suv','CarsController@suv');
     Route::post('images','CarsController@picUpload');
     Route::put('cars','CarsController@picUpload');
+
+
+//  前台用户管理
+    Route::resource('homeuser','HomeuserController');
+    // 前台用户搜索
+    Route::get('homeuser','HomeuserController@index');
+
+    // 前台用户发布车辆信息审核管理
+    Route::resource('homesell','HomesellController');
+    // 发布信息搜索
+    Route::get('homesell','HomesellController@index');
+
+
 });
+
+
+
+
+
+
 
 
 
@@ -70,6 +89,9 @@ Route::get('home/index','Home\IndexController@index');
 // 获取验证码
 Route::get('/phoneregister','Home\PhoneregisterController@sendCode');
 
+
+
+
 Route::group(['prefix'=>'home','namespace'=>'Home'],
     function(){
         // 前台登陆页面
@@ -77,21 +99,42 @@ Route::group(['prefix'=>'home','namespace'=>'Home'],
         // 前台注册页面
         Route::resource('phoneregister','PhoneregisterController');
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // 前台退出按钮
+        Route::get('quit','IndexController@quit');
+
+//=============================================================== 
+
+            // 中间件 如果登陆了就让他继续执行
+            Route::group(['middleware'=>'login.home'],
+            function(){
+                // 前台个人信息（修改）
+                Route::resource('detail','DetailController');
+                // 卖车
+                Route::resource('sell','SellController');
+
+                // 卖车上传图片
+                Route::post('imgs','SellController@picUpload');
+
+                
+
+            });
+
+
+
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -112,3 +155,4 @@ Route::group(['prefix'=>'home','namespace'=>'Home'],
 
 //我要买车
 Route::resource('home/buy','Home\BuyController');
+

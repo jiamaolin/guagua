@@ -1,33 +1,30 @@
 <?php
 
-namespace App\Http\Controllers\Home;
-
-
-use App\Http\Model\Cars;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Model\HomeUser;
+use Input;
 
-use Illuminate\Support\Facades\DB;
-
-
-class BuyController extends Controller
+class HomeuserController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        
+       $user = HomeUser::where('user_name','like','%'.$request['keywords'].'%')
+            ->paginate(3);
 
+        $keyword = $request->input('keywords');
 
-        $cars = DB::table('home_cars')->leftJoin('home_carpp','home_cars.cars_pp','=','home_carpp.p_id')->leftJoin('home_carsort','home_cars.cars_sort','=','home_carsort.car_id')->get();
-//        dd($cars);
-        return view('home.buy',['cars'=>$cars]);
-
+        return view('admin.home-user.list',compact('user','keyword'));
     }
 
     /**
@@ -57,15 +54,10 @@ class BuyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
-    public function show($id,Request $request)
+    public function show($id)
     {
-        $cars = $request->all();
-        $data = Cars::find($id);
-//        dd($cars);
-        return view('home.detail', compact('cars', 'data'));
+        
     }
-
 
     /**
      * Show the form for editing the specified resource.
@@ -76,6 +68,11 @@ class BuyController extends Controller
     public function edit($id)
     {
         //
+        $user = HomeUser::find($id);
+
+                // dd($user);
+
+        return view('admin.home-user.edit',compact('user'));
     }
 
     /**
@@ -88,6 +85,16 @@ class BuyController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $user_status = $request->input('user_status');
+        //根据id获取要修改的用户
+        $user = HomeUser::find($id);
+
+        $re = $user->update(['user_status'=>$user_status]);
+       // dd($re);
+        if($re){
+//            修改成功，返回用户列表页
+            return redirect('admin/homeuser');
+        }
     }
 
     /**

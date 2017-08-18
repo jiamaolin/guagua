@@ -2,18 +2,12 @@
 
 namespace App\Http\Controllers\Home;
 
-
-use App\Http\Model\Cars;
-
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use Illuminate\Support\Facades\DB;
-
-
-class BuyController extends Controller
+class DetailController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,12 +16,9 @@ class BuyController extends Controller
      */
     public function index()
     {
-
-
-        $cars = DB::table('home_cars')->leftJoin('home_carpp','home_cars.cars_pp','=','home_carpp.p_id')->leftJoin('home_carsort','home_cars.cars_sort','=','home_carsort.car_id')->get();
-//        dd($cars);
-        return view('home.buy',['cars'=>$cars]);
-
+        //
+        // return 111;
+        return view('home.detail.index');
     }
 
     /**
@@ -57,15 +48,10 @@ class BuyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
-    public function show($id,Request $request)
+    public function show($id)
     {
-        $cars = $request->all();
-        $data = Cars::find($id);
-//        dd($cars);
-        return view('home.detail', compact('cars', 'data'));
+        //
     }
-
 
     /**
      * Show the form for editing the specified resource.

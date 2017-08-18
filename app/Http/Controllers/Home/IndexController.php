@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+
 use Illuminate\Support\Facades\DB;
+use Session;
 
 class IndexController extends Controller
 {
@@ -17,8 +19,10 @@ class IndexController extends Controller
      */
     public function index()
     {
+
         $city = DB::table('home_city')->get();
         session(['city'=>$city]);
+        // 返回前台页面
         return view('home.index');
     }
 
@@ -30,6 +34,12 @@ class IndexController extends Controller
     public function create()
     {
         //
+    }
+
+    public function quit()
+    {
+        session(['user'=>null]);
+        return redirect('home/index');
     }
 
     /**
