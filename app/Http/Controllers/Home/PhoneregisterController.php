@@ -104,6 +104,7 @@ class PhoneregisterController extends Controller
         // dd($input);
         $input = Input::except('user_copass','_token','code');
         $input['user_pass'] = Crypt::encrypt($input['user_pass']);
+        $input['user_status']=1;
         $validator = Validator::make($input,$rule,$msg);
 
         // dd($input);

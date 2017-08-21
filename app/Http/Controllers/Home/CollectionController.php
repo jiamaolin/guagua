@@ -2,20 +2,15 @@
 
 namespace App\Http\Controllers\Home;
 
-
-use App\Http\Model\Cars;
-
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
-use Illuminate\Support\Facades\DB;
+use App\Http\Model\Cars;
 use Session;
-use App\Http\Model\UserCars;
+use DB;
 
-
-class BuyController extends Controller
+class CollectionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,12 +19,39 @@ class BuyController extends Controller
      */
     public function index()
     {
+        //
+        $user = Session::get('user');
+        // dd($user['user_id']);
+        $users = DB::table('user_cars')
+                ->where('user_id',$user['user_id'])
+                ->get();
+        // dd($users->cars_id);
+        $arr = [];
+        foreach ($users as $v) {
+            // echo ($v->cars_id).'</br>';
+            $cars = DB::table('home_cars')->where('cars_id',$v->cars_id)->get();
+
+            $arr[] = $cars;
+        };
+        // dd($arr->cars_id);
+        $str = [];
+        foreach ($arr as $key => $value) {
+            // dd($value);
+            // $str = $value;
+            foreach ($value as $aa => $bb) {
+               
+                    $str[] = $bb;
+              
+            }
+        }
+        // dd($str);
+        // dd($str);
+       
 
 
-        $cars = DB::table('home_cars')->leftJoin('home_carpp','home_cars.cars_pp','=','home_carpp.p_id')->leftJoin('home_carsort','home_cars.cars_sort','=','home_carsort.car_id')->get();
-//        dd($cars);
-        return view('home.buy',['cars'=>$cars]);
 
+
+        return view('home.detail.collection',compact('str'));
     }
 
     /**
@@ -59,18 +81,10 @@ class BuyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
-    public function show($id,Request $request)
+    public function show($id)
     {
-        $cars = $request->all();
-        $data = Cars::find($id);
-//        dd($cars);
-        session(['id'=>$id]);
-        return view('home.detail', compact('cars', 'data'));
-
-        // session(['id'=>$id]);
+        //
     }
-
 
     /**
      * Show the form for editing the specified resource.
@@ -104,19 +118,5 @@ class BuyController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function shoucang(Request $request)
-    {
-        // return 11;
-        // $url = $request->all();
-        // dd($url);
-        $cars_id = $request->session()->get('id');
-        // dd($cars_id);
-        $user_id = $request->session()->get('user');
-        // dd($user_id->user_id);
-        $res = UserCars::create( ['user_id' => $user_id->user_id , 'cars_id' => $cars_id ] );
-        return back();
-
     }
 }

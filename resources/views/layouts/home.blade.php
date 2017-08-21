@@ -147,7 +147,7 @@
         </div>
     </div>
 
-
+@section('content')
 @show
 <!-- 底部  s -->
 <div class="footer">

@@ -86,7 +86,7 @@
 
                     </span>
                     <a class="icon-warn js-notice" href="javascript:" data-gzlog="tracking_type=click&eventid=1012123400000003">降价提醒</a>
-                    <a class="icon-collect-star js-carcollect " href="javascript:" data-gzlog="tracking_type=click&eventid=1015123400000010"></a>
+                    <a class="icon-collect-star js-carcollect " href="{{url('home/shoucang')}}" data-gzlog="tracking_type=click&eventid=1015123400000010"></a>
                     <div class="page-number">
                         <span class="f20" data-role="currentNumber">1</span>
                         /30

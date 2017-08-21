@@ -27,7 +27,7 @@
         </li>
         <li>
             <h2>变速箱：<input type="text" name="car_biansu"></h2>
-            <input type="hidden" name="status" value="1" >
+            <input type="hidden" name="status" value="3" >
         </li>
         <tr>
                         <th><i class="require">*</i>主图：</th>

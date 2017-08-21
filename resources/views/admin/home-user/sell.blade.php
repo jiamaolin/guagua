@@ -66,10 +66,11 @@
                         
                         <td>
                             @if ( $v->status == 1 )
-                                待审核
-                            @elseif ($v->status == 2 )
                                 审核通过
-                           
+                            @elseif ($v->status == 2 )
+                                禁止发布
+                            @elseif ($v->status == 3 )
+                                待审核
                             @endif
                         </td>
 

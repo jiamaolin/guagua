@@ -99,20 +99,7 @@ Route::group(['prefix'=>'home','namespace'=>'Home'],
         // 前台注册页面
         Route::resource('phoneregister','PhoneregisterController');
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // 前台退出按钮
+         // 前台退出按钮
         Route::get('quit','IndexController@quit');
 
 //=============================================================== 
@@ -128,7 +115,11 @@ Route::group(['prefix'=>'home','namespace'=>'Home'],
                 // 卖车上传图片
                 Route::post('imgs','SellController@picUpload');
 
+                // 收藏
+                Route::get('shoucang','BuyController@shoucang');
                 
+                // 收藏中心
+                Route::resource('collection','CollectionController');
 
             });
 

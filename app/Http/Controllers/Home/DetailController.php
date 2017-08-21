@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use Session;
+// use App\Http\Model\UserSell;
 class DetailController extends Controller
 {
     /**
@@ -18,7 +19,14 @@ class DetailController extends Controller
     {
         //
         // return 111;
-        return view('home.detail.index');
+        $user = Session::get('user');
+        // dd($user['user_id']);
+
+        $sell = \DB::table('user_sell')
+                ->where('home_user_id',$user['user_id'])
+                ->get();
+                // dd($sell);
+        return view('home.detail.index',compact('sell'));
     }
 
     /**
