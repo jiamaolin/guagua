@@ -93,7 +93,7 @@ class LoginController extends Controller
         }
 
 //        3、成功后保存登录信息
-        session(['user'=>$user]);
+        session(['admin'=>$user]);
         return redirect('/admin/index');
 
 //        4、如果失败返回登录页面

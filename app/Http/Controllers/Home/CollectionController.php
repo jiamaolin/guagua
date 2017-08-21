@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Model\Cars;
 use Session;
 use DB;
+use App\Http\Model\UserCars;
 
 class CollectionController extends Controller
 {
@@ -44,12 +45,7 @@ class CollectionController extends Controller
               
             }
         }
-        // dd($str);
-        // dd($str);
        
-
-
-
 
         return view('home.detail.collection',compact('str'));
     }
@@ -118,5 +114,19 @@ class CollectionController extends Controller
     public function destroy($id)
     {
         //
+        // dd($id);
+         $user = Session::get('user'); 
+        // dd($user_id['user_id']);
+         $user_id = $user['user_id'];
+         // dd($user_id);
+         $arr = ['user_id'=>$user_id,'cars_id'=>$id];
+        $res =  DB::table('user_cars')
+            ->where($arr)->delete();
+        // dd($res);
+            if ( $res ){
+                return back();
+            }
+
     }
+    
 }
