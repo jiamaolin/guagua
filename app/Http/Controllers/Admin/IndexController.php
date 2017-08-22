@@ -31,7 +31,7 @@ class IndexController extends Controller
     //  退出登录 并销毁session
     public function quit()
     {
-        session(['user'=>null]);
+        session(['admin'=>null]);
         return redirect('admin/login');
     }
     // 修改密码页面

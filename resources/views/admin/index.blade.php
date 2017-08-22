@@ -17,7 +17,7 @@
 		</div>
 		<div class="top_right">
 			<ul>
-				<li>管理员：{{ session('user')->ad_name }}</li>
+				<li>管理员：{{ session('admin')->ad_name }}</li>
 				<li><a href="{{ url('admin/pass') }}" target="main">修改密码</a></li>
 				<li><a href="{{ url('admin/quit') }}">退出</a></li>
 			</ul>
